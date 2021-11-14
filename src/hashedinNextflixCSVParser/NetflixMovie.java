@@ -1,26 +1,28 @@
 package hashedinNextflixCSVParser;
 
+import java.time.LocalDate;
+
 public class NetflixMovie {
 
-	private String show_id;
+	private String showId;
 	private String type;
 	private String title;
 	private String director;
 	private String cast;
 	private String country;
-	private String date_added;
-	private String release_year;
+	private LocalDate dateAdded;
+	private Integer releaseYear;
 	private String rating;
 	private String duration;
-	private String listed_in;
+	private String listedIn;
 	private String description;
 
-	public String getShow_id() {
-		return show_id;
+	public String getShowId() {
+		return showId;
 	}
 
-	public void setShow_id(String show_id) {
-		this.show_id = show_id;
+	public void setShowId(String showId) {
+		this.showId = showId;
 	}
 
 	public String getType() {
@@ -63,20 +65,12 @@ public class NetflixMovie {
 		this.country = country;
 	}
 
-	public String getDate_added() {
-		return date_added;
+	public Integer getReleaseYear() {
+		return releaseYear;
 	}
 
-	public void setDate_added(String date_added) {
-		this.date_added = date_added;
-	}
-
-	public String getRelease_year() {
-		return release_year;
-	}
-
-	public void setRelease_year(String release_year) {
-		this.release_year = release_year;
+	public void setReleaseYear(Integer releaseYear) {
+		this.releaseYear = releaseYear;
 	}
 
 	public String getRating() {
@@ -95,12 +89,12 @@ public class NetflixMovie {
 		this.duration = duration;
 	}
 
-	public String getListed_in() {
-		return listed_in;
+	public String getListedIn() {
+		return listedIn;
 	}
 
-	public void setListed_in(String listed_in) {
-		this.listed_in = listed_in;
+	public void setListedIn(String listedIn) {
+		this.listedIn = listedIn;
 	}
 
 	public String getDescription() {
@@ -111,30 +105,39 @@ public class NetflixMovie {
 		this.description = description;
 	}
 
-	public NetflixMovie(String show_id, String type, String title, String director, String cast, String country,
-			String date_added, String release_year, String rating, String duration, String listed_in,
+	public LocalDate getDateAdded() {
+		return dateAdded;
+	}
+
+	public void setDateAdded(LocalDate dateAdded) {
+		this.dateAdded = dateAdded;
+	}
+
+	public NetflixMovie(String showId, String type, String title, String director, String cast, String country,
+			LocalDate dateAdded, Integer releaseYear, String rating, String duration, String listedIn,
 			String description) {
 		super();
-		this.show_id = show_id;
+		this.showId = showId;
 		this.type = type;
 		this.title = title;
 		this.director = director;
 		this.cast = cast;
 		this.country = country;
-		this.date_added = date_added;
-		this.release_year = release_year;
+		this.dateAdded = dateAdded;
+		this.releaseYear = releaseYear;
 		this.rating = rating;
 		this.duration = duration;
-		this.listed_in = listed_in;
+		this.listedIn = listedIn;
 		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return "[show_id=" + show_id + ", type=" + type + ", title=" + title + ", director=" + director
-				+ ", cast=" + cast + ", country=" + country + ", date_added=" + date_added + ", release_year="
-				+ release_year + ", rating=" + rating + ", duration=" + duration + ", listed_in=" + listed_in
+		return "[showId=" + showId + ", type=" + type + ", title=" + title + ", director=" + director
+				+ ", cast=" + cast + ", country=" + country + ", dateAdded=" + dateAdded + ", releaseYear="
+				+ releaseYear + ", rating=" + rating + ", duration=" + duration + ", listedIn=" + listedIn
 				+ ", description=" + description + "]";
 	}
+
 
 }

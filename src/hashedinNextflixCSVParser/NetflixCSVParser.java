@@ -7,9 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class NetflixCSVClassBuilder {
+public class NetflixCSVParser implements CSVParser {
 	private BufferedReader reader;
 
+	@Override
 	public List<List<String>> cleanNetflixCSV() {
 		String allCSV = this.reader.lines().skip(1).collect(Collectors.joining(System.lineSeparator()));
 		StringBuffer result = new StringBuffer();
@@ -25,11 +26,9 @@ public class NetflixCSVClassBuilder {
 				.collect(Collectors.toList());
 		return ret;
 	}
-
-	public NetflixCSVClassBuilder(BufferedReader reader) {
+	public NetflixCSVParser(BufferedReader reader) {
 		super();
 		this.reader = reader;
-
 	}
 
 	
