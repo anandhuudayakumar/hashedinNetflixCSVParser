@@ -37,7 +37,7 @@ public class NetflixCSVService {
 	}
 	
 	public Stream<NetflixMovie> firstNMovies(long n, String listed_in) {
-		if (((n > 0) && (n <= this.NetflixMovie.size())) && (listed_in != null) && (!listed_in.isEmpty())) {
+		if ((n > 0) && (listed_in != null) && (!listed_in.isEmpty())) {
 			return this.NetflixMovie.stream().limit(n)
 					.filter(movie -> movie.getListedIn().toLowerCase().contains(listed_in.toLowerCase()) == true);
 		} else {

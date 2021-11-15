@@ -12,6 +12,7 @@ public class App {
 	public static void main(String[] args) {
 		Stream<NetflixMovie> queryResult = null;
 		Scanner sc = new Scanner(System.in);
+		double duration = 0;
 		try (BufferedReader reader = Files.newBufferedReader(Paths.get(
 				"C:\\Users\\anand\\eclipse-workspace\\hashedinNextflixCSVParser\\src\\resources\\netflix_titles.csv"),
 				StandardCharsets.UTF_8)) {
@@ -22,12 +23,22 @@ public class App {
 			System.out.println("Enter number of records to fetch:");
 			long numberOfRecords = sc.nextLong();
 			if (selectedQuery == 1) {
+				long startTime = System.nanoTime();
 				queryResult = netflixCSVService.firstNMovies(numberOfRecords);
+				long endTime = System.nanoTime();
+				duration = (double) (endTime - startTime) / 1000000;
 			} else if (selectedQuery == 2) {
+				long startTime = System.nanoTime();
 				queryResult = netflixCSVService.firstNMovies(numberOfRecords, "Horror Movies");
+				long endTime = System.nanoTime();
+				duration = (double) (endTime - startTime) / 1000000;
 			} else if (selectedQuery == 3) {
+				long startTime = System.nanoTime();
 				queryResult = netflixCSVService.firstNMovies(numberOfRecords, "Movie", "India");
+				long endTime = System.nanoTime();
+				duration = (double) (endTime - startTime) / 1000000;
 			} else if (selectedQuery == 4) {
+				long startTime = System.nanoTime();
 				String userInput = sc.next();
 				String[] userInputArray = userInput.split(",");
 				Stream<NetflixMovie> partialQuery = null;
@@ -39,6 +50,8 @@ public class App {
 					partialQuery = netflixCSVService.firstNMovies(numberOfRecords, "Movie", "India");
 				}
 				queryResult = netflixCSVService.firstNMovies(partialQuery, userInputArray[1], userInputArray[2]);
+				long endTime = System.nanoTime();
+				duration = (double) (endTime - startTime) / 1000000;
 			} else {
 				System.out.println("Invalid Query selected");
 			}
@@ -47,6 +60,7 @@ public class App {
 			} else {
 				System.out.println("No record found");
 			}
+			System.out.println("Query Execution Time :" + duration + " ms");
 			sc.close();
 		} catch (IOException ex) {
 			ex.printStackTrace();
